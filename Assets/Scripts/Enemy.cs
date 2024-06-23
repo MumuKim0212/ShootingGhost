@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+    private void FixedUpdate()
+    {
         UpDown();
     }
     private void UpDown()
