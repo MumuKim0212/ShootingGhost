@@ -10,7 +10,7 @@ public class Shoot : MonoBehaviour
     public GameObject prefab;
     public ParticleSystem particle;
     public Text scoreText;
-    int score = 0;
+    public int score = 0;
     AudioSource audioSource;
 
     private void Start()
@@ -31,6 +31,7 @@ public class Shoot : MonoBehaviour
         {
             if (hit.transform.tag == "Enemy")
             {
+                audioSource.Play();
                 Destroy(hit.transform.gameObject);
                 Instantiate(prefab, hit.point,
                             Quaternion.LookRotation(hit.normal));

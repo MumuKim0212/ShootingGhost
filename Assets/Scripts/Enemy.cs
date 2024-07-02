@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     public float speed = 0.1f;
     private int isUp;
+    Player attack;
 
     private void Awake()
     {
@@ -40,6 +41,16 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            attack = collision.gameObject.GetComponent<Player>();
+            attack.Damage(10);
+        }
+    }
+
     private void OnDestroy()
     {
         DOTween.Clear();
